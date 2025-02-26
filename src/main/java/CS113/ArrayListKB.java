@@ -53,18 +53,14 @@ public class ArrayListKB<E> implements ListInterface<E> {
         }
         array[index] = element;
 
-//        for(int i = index; i < array.length - 1; i ++){
-//            E temp = array[i +1];
-//            array[i + 1] = array[i];
-//            array[i] = element;
-//            element = temp;}
+        for(int i = index; i < array.length - 1; i ++){
+            E temp = array[i];
+            array[i] = element;
+            element = temp;}
     }
 
     @Override
     public void clear() {
-//        for (int i = 0; i < array.length; i++){
-//            array[i] = null;
-//        }
         for(E element : array){
             element = null;
         }
