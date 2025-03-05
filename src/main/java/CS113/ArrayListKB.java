@@ -1,5 +1,7 @@
 package CS113;
 
+import CS113.Interfaces.ListInterface;
+
 public class ArrayListKB<E> implements ListInterface<E> {
     private E[] array;
     //private int count;

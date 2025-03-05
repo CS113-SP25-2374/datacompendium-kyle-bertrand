@@ -1,6 +1,10 @@
 package CS113;
 
-public class LinkedListKB<E> implements ListInterface<E>, IterableInterface<E>{
+import CS113.Interfaces.IterableInterface;
+import CS113.Interfaces.IteratorInterface;
+import CS113.Interfaces.ListInterface;
+
+public class LinkedListKB<E> implements ListInterface<E>, IterableInterface<E> {
 
 
     private class Node<E>{
@@ -23,7 +27,7 @@ public class LinkedListKB<E> implements ListInterface<E>, IterableInterface<E>{
         return curr;
     }
 
-    private class Iterator<E> implements IteratorInterface<E>{
+    private class Iterator<E> implements IteratorInterface<E> {
         LinkedListKB<E>.Node<E> curr;
         LinkedListKB<E> list;
 
