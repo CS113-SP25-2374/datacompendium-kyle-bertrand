@@ -2,6 +2,8 @@ package CS113;
 
 import CS113.Interfaces.DequeInterface;
 
+import java.util.NoSuchElementException;
+
 public class ArrayDequeKB<E> implements DequeInterface<E> {
     static final private int DEFAULT_SIZE = 10;
     E[] array;
@@ -22,7 +24,7 @@ public class ArrayDequeKB<E> implements DequeInterface<E> {
             return;
         }
         //otherwise resize
-        for(int i = 0 ; i < array.length; i++){
+        for(int i = 0 ; i <= last; i++){
             newArray[i] = array[i];
         }
 
@@ -32,6 +34,7 @@ public class ArrayDequeKB<E> implements DequeInterface<E> {
                 newArray[i + difference] = array[i];
             }
         }
+        array = newArray;
     }
 
     @Override
@@ -54,15 +57,46 @@ public class ArrayDequeKB<E> implements DequeInterface<E> {
 
     @Override
     public boolean addFirst(E element) {
+        if(size == 0){
+            first = last = 0;
+            array[first] = element;
+            size++;
+            return true;
+        }
 
+        if(size == array.length){
+            resize(size * 2);
+        }
 
-        return false;
+        first --;
+        if(first < 0){
+            first = array.length - 1;
+        }
+        array[first] = element;
+        size++;
+        return true;
     }
 
     @Override
     public boolean addLast(E element) {
+        if(size == 0){
+            first = last = 0;
+            array[last] = element;
+            size++;
+            return true;
+        }
 
-        return false;
+        if(size == array.length){
+            resize(size * 2);
+        }
+
+        last++;
+        if(last >= array.length){
+           last = 0;
+        }
+        array[last] = element;
+        size++;
+        return true;
     }
 
     @Override
@@ -72,7 +106,19 @@ public class ArrayDequeKB<E> implements DequeInterface<E> {
 
     @Override
     public E removeLast() {
-        return null;
+        if( size == 0){
+            throw new NoSuchElementException();
+        }
+        E temp = array[last];
+        array[last] = null;
+        last--;
+        if(last < 0){
+            last = array.length - 1;
+        }
+        if(size == 0){
+            first = last = -1;
+        }
+        return temp;
     }
 
     @Override
@@ -82,7 +128,10 @@ public class ArrayDequeKB<E> implements DequeInterface<E> {
 
     @Override
     public E peekLast() {
-        return null;
+        if(size == 0){
+            return null;
+        }
+        return array[last];
     }
 
     @Override
@@ -92,16 +141,35 @@ public class ArrayDequeKB<E> implements DequeInterface<E> {
 
     @Override
     public E pollLast() {
-        return null;
+        try {
+            return removeLast();
+        }catch(Exception e){
+            return null;
+        }
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
+    }
+
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        int size = size();
+        for (int i = 0; i < array.length; i++){
+            stringBuilder.append(array[i]);
+            if (i != size - 1) {
+                stringBuilder.append(", ");
+            }
+        }
+        stringBuilder.append("]");
+
+        return stringBuilder.toString();
     }
 }
