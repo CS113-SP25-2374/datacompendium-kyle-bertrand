@@ -120,12 +120,13 @@ public class ArrayListKB<E> implements ListInterface<E> {
 
     @Override
     public int size() {
-        for(int i = array.length - 1; i>= 0;  i++){
-            if(array[i] != null){
-                return i +1 ;
+        int count = 0;
+        for (E e : array) {
+            if (e != null) {
+                count++;
             }
         }
-        return 0;
+        return count;
     }
 
     @Override

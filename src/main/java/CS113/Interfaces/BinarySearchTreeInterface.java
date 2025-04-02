@@ -23,3 +23,4 @@ public interface BinarySearchTreeInterface<E extends Comparable<E>> {
     // Clear the BST
     void clear();
 
+}

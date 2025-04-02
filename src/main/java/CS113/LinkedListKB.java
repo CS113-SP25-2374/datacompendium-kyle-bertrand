@@ -141,14 +141,21 @@ public class LinkedListKB<E> implements ListInterface<E>, IterableInterface<E> {
 
     @Override
     public int indexOf(Object object) {
-        //add code
-        return 0;
+        int index = 0;
+        Node<E> current = head;
+        while (current != null) {
+            if (current.element.equals(object)) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1;
     }
 
     @Override
     public E get(int index) {
-        //add code
-        return null;
+        return getIndex(index).element;
     }
 
     @Override
@@ -185,7 +192,8 @@ public class LinkedListKB<E> implements ListInterface<E>, IterableInterface<E> {
 
     @Override
     public void set(int index, E element) {
-        //add code
+        Node<E> node = getIndex(index);
+        node.element = element;
     }
 
     @Override

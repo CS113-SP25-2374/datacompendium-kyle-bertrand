@@ -101,7 +101,17 @@ public class ArrayDequeKB<E> implements DequeInterface<E> {
 
     @Override
     public E removeFirst() {
-        return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        E element = array[first];
+        array[first] = null;
+        first = (first + 1) % array.length;
+        size--;
+        if (isEmpty()) {
+            first = last = -1;
+        }
+        return element;
     }
 
     @Override
@@ -123,7 +133,10 @@ public class ArrayDequeKB<E> implements DequeInterface<E> {
 
     @Override
     public E peekFirst() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        }
+        return array[first];
     }
 
     @Override
@@ -136,7 +149,10 @@ public class ArrayDequeKB<E> implements DequeInterface<E> {
 
     @Override
     public E pollFirst() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        }
+        return removeFirst();
     }
 
     @Override
@@ -158,18 +174,19 @@ public class ArrayDequeKB<E> implements DequeInterface<E> {
         return size;
     }
 
+    @Override
     public String toString(){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("[");
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
         int size = size();
         for (int i = 0; i < array.length; i++){
-            stringBuilder.append(array[i]);
+            sb.append(array[i]);
             if (i != size - 1) {
-                stringBuilder.append(", ");
+                sb.append(", ");
             }
         }
-        stringBuilder.append("]");
+        sb.append("]");
 
-        return stringBuilder.toString();
+        return sb.toString();
     }
 }
