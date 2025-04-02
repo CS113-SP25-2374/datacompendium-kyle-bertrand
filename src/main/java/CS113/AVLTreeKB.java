@@ -4,7 +4,7 @@ import CS113.Interfaces.Comparable;
 
 import static java.lang.Math.max;
 
-public class AVLTreeKB<E extends Comparable<E> & java.lang.Comparable<E>> extends BinarySearchTreeKB<E> {
+public class AVLTreeKB<E extends Comparable<E> & java.lang.Comparable<E>> extends BinarySearchTreeKB<E>{
 
     int height(Node<E> node) {
         return node != null ? node.height : -1;
@@ -70,9 +70,6 @@ public class AVLTreeKB<E extends Comparable<E> & java.lang.Comparable<E>> extend
 
     @Override
     Node<E> insertRecursive(Node<E> node, E element) {
-        node = super.insertRecursive(node, element);
-        node = rebalance(node);
-
         if (node == null) {
             return new Node<E>(element);
         }
