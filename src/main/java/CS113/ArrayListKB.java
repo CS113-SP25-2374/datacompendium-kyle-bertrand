@@ -96,7 +96,6 @@ public class ArrayListKB<E> implements ListInterface<E> {
 
     @Override
     public boolean isEmpty() {
-
         return size() == 0;
     }
 
