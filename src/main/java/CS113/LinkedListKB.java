@@ -99,6 +99,21 @@ public class LinkedListKB<E> implements ListInterface<E>, IterableInterface<E> {
 
         return true;
     }
+    public void addLast(E element) {
+        if (element == null) {
+            throw new NullPointerException("Cannot add null element to the list");
+        }
+
+        Node<E> newNode = new Node<>(element);
+        if (tail == null) { // implies head is also null (empty list)
+            head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
+        }
+        size++;
+    }
 
     @Override
     public void add(int index, E element) {
