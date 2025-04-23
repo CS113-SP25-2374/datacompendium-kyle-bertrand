@@ -19,47 +19,38 @@ public class ArrayListKB<E> implements ListInterface<E> {
         array = resizeArray;
     }
 
+
     @Override
     public boolean add(E element) {
-        if(array[array.length - 1] != null){
-            int length = array.length;
+        if (size() >= array.length) {
             resize();
-            array[length] = element;
-
         }
-
-        for(int i = 0; i < array.length; i++){
-            if(array[i] == null){
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
                 array[i] = element;
                 return true;
             }
         }
-        return true;
+        return false; // should never hit this line
     }
 
     @Override
     public void add(int index, E element) {
-
-        if(index<0 || index>=array.length){
+        if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException();
         }
 
-        if(array[array.length - 1] != null){
+        if (size() >= array.length) {
             resize();
-        }else if(index == array.length-1){
-            array[array.length - 1] = element;
         }
 
-        for(int i = size(); i >= index; i --) {
+        for (int i = size(); i > index; i--) {
             array[i] = array[i - 1];
         }
-        array[index] = element;
 
-        for(int i = index; i < array.length - 1; i ++){
-            E temp = array[i];
-            array[i] = element;
-            element = temp;}
+        array[index] = element;
     }
+
 
     @Override
     public void clear() {
