@@ -95,7 +95,7 @@ public class SortingHatKB<E extends Comparable<E>>{
             }
         }
 
-        return mergePivot(quickSort(left), E pivot, quickSort(right));
+        return mergePivot(quickSort(left), (E)pivot, quickSort(right));
     }
 
     ArrayListKB<E> mergePivot(ArrayListKB<E> left, E pivot, ArrayListKB<E> right) {
@@ -122,5 +122,3 @@ public class SortingHatKB<E extends Comparable<E>>{
 
 
 
-
-}
