@@ -45,8 +45,7 @@ public class ArrayDequeCelebration<E> implements DequeInterface<E>, IterableInte
 
     @Override
     public IteratorInterface<E> iterator() {
-        ArrayDequeIterator arrayDequeIterator = new ArrayDequeIterator;
-        return arrayDequeIterator;
+        return new ArrayDequeIterator();
     }
 
     private class ArrayDequeIterator<E> implements IteratorInterface<E> {
