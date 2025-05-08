@@ -7,7 +7,7 @@ import CS113.Interfaces.IteratorInterface;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 /**
- * Kyle Bertrand
+ * Kyle Bertrand CS113
  * ArrayDeque  Double Ended Queue
  *
  * An ArrayDeque uses a resizable circular array that allows insertion and removal from both ends in constant time.
@@ -200,6 +200,7 @@ public class ArrayDequeCelebration<E> implements DequeInterface<E>, IterableInte
         if(last < 0){
             last = array.length - 1;
         }
+        size--;
         if(size == 0){
             first = last = -1;
         }
@@ -255,15 +256,17 @@ public class ArrayDequeCelebration<E> implements DequeInterface<E>, IterableInte
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("[");
-        int size = size();
-        for (int i = 0; i < array.length; i++){
+
+        int i = first;
+        for (int count = 0; count < size; count++) {
             sb.append(array[i]);
-            if (i != size - 1) {
+            if (count < size - 1) {
                 sb.append(", ");
             }
+            i = (i + 1) % array.length;
         }
-        sb.append("]");
 
+        sb.append("]");
         return sb.toString();
     }
 
