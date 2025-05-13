@@ -26,16 +26,19 @@ import java.util.NoSuchElementException;
  * Remove (removeFirst/removeLast): O(1)
  * Find (via iteration): O(n)
  * Iteration: O(n)
+ * Memory Usage: O(n)
  *
- * Some disadvantages: ArrayDeque classes are not synchroized so multiple threasa can be accessesds simultaneously,
+ * Some disadvantages: ArrayDeque classes are not synchronized so multiple threads can be accessed simultaneously,
  * which can lead to potential data corruption
- * Although resizbale, you need to create another ArrayDeque when the old one reaches capacity.
+ * Although resizable, you need to create another ArrayDeque when the old one reaches capacity.
  *
  * Real World use cases involve things such as:
  * browser history (
  * back/ forward are both stacks or deques clicking forward and back moves the page between these structures )
+ *
  * undo and redo in texteditors
- * actions are pushed onto a deque as the user malkes changes, undo pops from the back and redo pushes back to the front
+ * actions are pushed onto a deque as the user makes changes, undo pops from the back and redo pushes back to the front
+ *
  * task scheduling systems
  * you can have systems that use the front of the list as higher priority and the back of the list as lower priority
  * anything involving task management such as a printer better uses deques for dynamic task urgency
@@ -172,7 +175,7 @@ public class ArrayDequeCelebration<E> implements DequeInterface<E>, IterableInte
     }
 
 
-    //reomves and returns front element
+    //removes and returns front element
     @Override
     public E removeFirst() {
         if (isEmpty()) {
