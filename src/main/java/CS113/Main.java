@@ -9,7 +9,7 @@ public class Main {
         ArrayDequeCelebration<String> deque = new ArrayDequeCelebration<>();
 
         //insert demonstration
-        System.out.println("=== Insert Test ===");
+
         deque.addFirst("B"); // [B]
         deque.addLast("C"); // [B , C ]
         deque.addLast("A"); // [B , C , A]
@@ -18,31 +18,31 @@ public class Main {
 
 
         //remove demonstration
-        System.out.println("\n=== Remove Test ===");
+
         String removedFirst = deque.removeFirst(); // removes D
         String removedLast = deque.removeLast();   // removes A
-        System.out.println("Removed from front: " + removedFirst);
+        System.out.println("\nRemoved from front: " + removedFirst);
         System.out.println("Removed from back: " + removedLast);
         System.out.println("Deque after removals: " + deque); //[ B , C ,null]
 
         //find demonstration
-        System.out.println("\n=== Contains Test ===");
+
         deque.addLast("X");
         deque.addLast("Y");
         deque.addLast("Z"); // [B, C, X, Y, Z, null]
         System.out.println(deque);
-        System.out.println("Contains 'Y'? " + deque.contains("Y"));
+        System.out.println("\nContains 'Y'? " + deque.contains("Y"));
         System.out.println("Contains 'Q'? " + deque.contains("Q"));
 
         //iterate demonstration
-        System.out.println("\n=== Iteration Test ===");
+        System.out.println();
         IterableInterface<String> iterable = deque;
         IteratorInterface<String> it = iterable.iterator();
         while (it.hasNext()) {
             System.out.println("Iterated element: " + it.next());
         }
 
-        System.out.println("\n=== Final Deque ===");
+        System.out.println("\nFinal Deque");
         System.out.println(deque);
     }
 }
